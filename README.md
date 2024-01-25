@@ -1,36 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Running INSTALL Frontend App with Docker Compose
 
-## Getting Started
+## Prerequisites
 
-First, run the development server:
+Make sure you have [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your machine.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Cloning Repo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once you have Docker and Docker-Compose installed, make sure to clone this GitHub repo by selecting the green "Code" button above and select either HTTPS or SSH, whichever you prefer. Copy the URL, open your terminal and run `git clone <copied-URL>` in whichever directory you'd like.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running App (First time)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Once you have cloned the repo, cd into `install-frontend/` and in your terminal run `docker-compose up --build`. This will start up Docker to pull/create the image, and run it. From there go to [localhost:8081](http://localhost:8081/) to run the app! Hit Control + C to kill the app in this first run.
 
-## Learn More
+## Running App (After first run)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Once you've succesfully been able to build and run the app the first time. You can simply use `docker-compose up -d` to run the container in detached mode. If you want to then kill the app use `docker-compose down`
