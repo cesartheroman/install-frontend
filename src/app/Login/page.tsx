@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Theme } from "@twilio-paste/core/dist/theme";
 import {
@@ -16,7 +16,7 @@ import { Label } from "@twilio-paste/core/label";
 import { Box } from "@twilio-paste/core/box";
 import { Button } from "@twilio-paste/core/button";
 
-const Auth = () => {
+const Login = () => {
   return (
     <Theme.Provider>
       <Box>
@@ -53,4 +53,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Login;
