@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 
+import { Theme } from "@twilio-paste/core/theme";
+import { Button } from "@twilio-paste/core/button";
+
 export default function App() {
   const [number, setNumber] = useState(0);
 
@@ -11,14 +14,13 @@ export default function App() {
   }
 
   return (
-    <div>
-      <p>Random number: {number}</p>
-      <button
-        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-        onClick={handlePress}
-      >
-        Generate a number
-      </button>
-    </div>
+    <Theme.Provider theme="default">
+      <div>
+        <p>Random number: {number}</p>
+        <Button variant="primary" onClick={handlePress}>
+          Generate a number
+        </Button>
+      </div>
+    </Theme.Provider>
   );
 }
