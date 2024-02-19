@@ -31,13 +31,15 @@ const Login = () => {
   };
 
   const handleSubmit = async () => {
+    //TODO: Fix user login bug!
+    const usersList = USERS.filter((dbUser) => dbUser.email === user.email);
+    const userExists = usersList.length > 0;
+
     for (const dbUser of USERS) {
       if (user.email === dbUser.email && user.password === dbUser.password) {
         alert("logged in!");
-        return;
       } else {
         alert("Credentials incorrect");
-        return;
       }
     }
   };
