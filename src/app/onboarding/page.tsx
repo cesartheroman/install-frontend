@@ -11,7 +11,7 @@ import {
   FormControl,
 } from "@twilio-paste/core/form";
 import { Input } from "@twilio-paste/core/input";
-import { Label } from "@twilio-paste/core/Label";
+import { Label } from "@twilio-paste/core/label";
 import { Heading } from "@twilio-paste/core/heading";
 import { Paragraph } from "@twilio-paste/core/paragraph";
 import { ButtonGroup } from "@twilio-paste/core/button-group";
