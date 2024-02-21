@@ -3,24 +3,16 @@
 import React, { useState } from "react";
 
 import { Theme } from "@twilio-paste/core/theme";
-import { Button } from "@twilio-paste/core/button";
+
+import OnboardingFlow from "./onboarding/page";
+import Login from "./login/page";
 
 export default function App() {
-  const [number, setNumber] = useState(0);
-
-  function handlePress() {
-    let randomNumber = Math.floor(Math.random() * 10000) % 100;
-    setNumber(randomNumber);
-  }
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
   return (
     <Theme.Provider theme="default">
-      <div>
-        <p>Random number: {number}</p>
-        <Button variant="primary" onClick={handlePress}>
-          Generate a number
-        </Button>
-      </div>
+      {loggedIn ? <OnboardingFlow /> : <Login setLogin={setLoggedIn} />}
     </Theme.Provider>
   );
 }

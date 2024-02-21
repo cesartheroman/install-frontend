@@ -17,7 +17,7 @@ import { Paragraph } from "@twilio-paste/core/paragraph";
 import { ButtonGroup } from "@twilio-paste/core/button-group";
 import { Button } from "@twilio-paste/core/button";
 
-const Auth = () => {
+const OnboardingFlow = () => {
   return (
     <Theme.Provider>
       <Box
@@ -193,4 +193,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default OnboardingFlow;

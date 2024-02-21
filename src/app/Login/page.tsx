@@ -17,7 +17,11 @@ import { Button } from "@twilio-paste/core/button";
 
 import { USERS } from "../../lib/users.js";
 
-const Login = () => {
+interface LoginProps {
+  setLogin: (state: boolean) => void;
+}
+
+const Login = ({ setLogin }: LoginProps) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -31,17 +35,12 @@ const Login = () => {
   };
 
   const handleSubmit = async () => {
-    //TODO: Fix user login bug!
-    const usersList = USERS.filter((dbUser) => dbUser.email === user.email);
-    const userExists = usersList.length > 0;
+    const foundUser = USERS.filter(
+      (dbUser) =>
+        dbUser.email === user.email && dbUser.password === user.password,
+    );
 
-    for (const dbUser of USERS) {
-      if (user.email === dbUser.email && user.password === dbUser.password) {
-        alert("logged in!");
-      } else {
-        alert("Credentials incorrect");
-      }
-    }
+    return foundUser.length ? setLogin(true) : alert("Credentials incorrect");
   };
 
   return (
