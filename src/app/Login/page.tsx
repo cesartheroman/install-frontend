@@ -17,7 +17,11 @@ import { Button } from "@twilio-paste/core/button";
 
 import { USERS } from "../../lib/users.js";
 
-const Login = () => {
+interface LoginProps {
+  setLogin: (state: boolean) => void;
+}
+
+const Login = ({ setLogin }: LoginProps) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -36,9 +40,7 @@ const Login = () => {
         dbUser.email === user.email && dbUser.password === user.password,
     );
 
-    return foundUser.length
-      ? alert("User logged in!")
-      : alert("Credentials incorrect");
+    return foundUser.length ? setLogin(true) : alert("Credentials incorrect");
   };
 
   return (
