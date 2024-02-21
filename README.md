@@ -16,4 +16,4 @@ Once you have cloned the repo, cd into `install-frontend/` and in your terminal 
 
 Once you've succesfully been able to build and run the app the first time (within the `install-frontend`), you can simply use `docker-compose up -d` to run the container in detached mode. If you want to then kill the app use `docker-compose down`.
 
-Make sure to always `git pull` for latest code changes before running `docker-compose up` to make sure you have the latest version of the app.
+Make sure to always `git pull` for latest code changes before running `docker-compose up --build` to make sure you have the latest version of the app.
