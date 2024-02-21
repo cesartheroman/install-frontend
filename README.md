@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Make sure you have [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your machine.
+Make sure you have [Docker](https://www.docker.com/) installed on your machine.
 
 ## Cloning Repo
 
