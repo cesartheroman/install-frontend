@@ -8,11 +8,11 @@ import OnboardingFlow from "./onboarding/page";
 import Login from "./login/page";
 
 export default function App() {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [loggedIn, _] = useState<boolean>();
 
   return (
     <Theme.Provider theme="default">
-      {loggedIn ? <OnboardingFlow /> : <Login setLogin={setLoggedIn} />}
+      {loggedIn ? <OnboardingFlow /> : <Login />}
     </Theme.Provider>
   );
 }

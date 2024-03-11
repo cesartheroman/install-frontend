@@ -15,13 +15,7 @@ import { Label } from "@twilio-paste/core/label";
 import { Box } from "@twilio-paste/core/box";
 import { Button } from "@twilio-paste/core/button";
 
-import { USERS } from "../../lib/users.js";
-
-interface LoginProps {
-  setLogin: (state: boolean) => void;
-}
-
-const Login = ({ setLogin }: LoginProps) => {
+const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -34,14 +28,7 @@ const Login = ({ setLogin }: LoginProps) => {
     });
   };
 
-  const handleSubmit = async () => {
-    const foundUser = USERS.filter(
-      (dbUser) =>
-        dbUser.email === user.email && dbUser.password === user.password,
-    );
-
-    return foundUser.length ? setLogin(true) : alert("Credentials incorrect");
-  };
+  const handleSubmit = async () => {};
 
   return (
     <Theme.Provider>
