@@ -16,11 +16,14 @@ import { Heading } from "@twilio-paste/core/heading";
 import { Paragraph } from "@twilio-paste/core/paragraph";
 import { ButtonGroup } from "@twilio-paste/core/button-group";
 import { Button } from "@twilio-paste/core/button";
+import { UserButton } from "@clerk/nextjs";
 
 const OnboardingFlow = () => {
   return (
     <Theme.Provider>
+      <UserButton />
       <Box
+        //TODO: can add class to this
         overflow="hidden"
         borderRadius="borderRadius20"
         borderStyle="solid"
