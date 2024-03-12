@@ -91,6 +91,10 @@ h6 {
   margin: 1rem;
 }
 
+.chart {
+  max-width: 500px;
+}
+
 .landing-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
