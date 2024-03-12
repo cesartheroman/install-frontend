@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.className} parent`}>{children}</body>
+        <body className={`${inter.className} wrapper`}>{children}</body>
       </html>
     </ClerkProvider>
   );

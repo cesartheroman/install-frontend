@@ -8,7 +8,7 @@ import PolarAreaChart from "../components/PolarAreaChart";
 
 const Landing = () => {
   return (
-    <div className="landing-wrapper">
+    <div className="landingWrapper">
       <BarChart />
       <DoughnutChart />
       <LineChart />
