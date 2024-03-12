@@ -53,8 +53,8 @@ const data = {
   ],
 };
 
-const Chart = () => {
+const Landing = () => {
   return <Bar options={options} data={data} />;
 };
 
-export default Chart;
+export default Landing;
