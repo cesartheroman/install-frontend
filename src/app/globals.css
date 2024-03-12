@@ -90,3 +90,8 @@ h6 {
   border: 1px dashed red;
   margin: 1rem;
 }
+
+.landing-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
