@@ -32,7 +32,7 @@ const data = {
 };
 
 const DoughnutChart = () => {
-  return <Doughnut className="chart" data={data} />;
+  return <Doughnut data={data} className="chart" />;
 };
 
 export default DoughnutChart;
