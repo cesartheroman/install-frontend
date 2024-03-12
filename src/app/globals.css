@@ -70,20 +70,9 @@ h6 {
   isolation: isolate;
 }
 
-.parent {
-  height: 90vh;
-  margin: 2rem;
-
-  border: 1px dashed blue;
-}
-
 .wrapper {
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  height: 90vh;
   margin: 2rem;
-
-  border: 1px dashed blue;
+  border: 1px dashed purple;
 }
 
 .box {
@@ -92,10 +81,16 @@ h6 {
 }
 
 .chart {
-  max-width: 500px;
+  border: 1px dashed red;
+  width: 950px;
 }
 
-.landing-wrapper {
+.landingWrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 2fr;
+  margin: 1rem;
+  max-height: 90vh;
+
+  border: 1px dashed green;
 }
