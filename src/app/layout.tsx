@@ -19,11 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <UserButton />
+    <html lang="en">
+      <head>
+        <title>Join INSTALL </title>
+      </head>
+      <ClerkProvider>
+        <UserButton afterSignOutUrl="/" />
         <body className={`${inter.className} wrapper`}>{children}</body>
-      </html>
-    </ClerkProvider>
+      </ClerkProvider>
+    </html>
   );
 }
