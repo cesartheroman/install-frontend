@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { UserButton } from "@clerk/nextjs";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,6 +21,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <UserButton />
         <body className={`${inter.className} wrapper`}>{children}</body>
       </html>
     </ClerkProvider>
