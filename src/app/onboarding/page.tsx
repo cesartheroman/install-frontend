@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { Theme } from "@twilio-paste/core/dist/theme";
 import { Box } from "@twilio-paste/core/box";
@@ -16,12 +16,41 @@ import { Heading } from "@twilio-paste/core/heading";
 import { Paragraph } from "@twilio-paste/core/paragraph";
 import { ButtonGroup } from "@twilio-paste/core/button-group";
 import { Button } from "@twilio-paste/core/button";
-import { UserButton } from "@clerk/nextjs";
+
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 const OnboardingFlow = () => {
+  const { user } = useUser();
+  const router = useRouter();
+  console.log("user in onboarding:", user?.unsafeMetadata);
+
+  const handleSkipped = async () => {
+    if (!user) return null;
+
+    user.update({
+      unsafeMetadata: {
+        skippedOnboarding: true,
+      },
+    });
+
+    router.push("/dashboard");
+  };
+
+  const handleSubmit = async () => {
+    if (!user) return null;
+
+    user.update({
+      unsafeMetadata: {
+        skippedOnboarding: false,
+      },
+    });
+
+    router.push("/dashboard");
+  };
+
   return (
     <Theme.Provider>
-      <UserButton />
       <Box
         //TODO: can add class to this
         overflow="hidden"
@@ -37,6 +66,9 @@ const OnboardingFlow = () => {
                 Let's get started!
               </Heading>
               <Paragraph>Please answer a few questions.</Paragraph>
+              <Button variant="secondary" onClick={handleSkipped}>
+                Want to do this later? Skip!
+              </Button>
             </FormSectionHeading>
 
             <FormControl>
@@ -167,28 +199,9 @@ const OnboardingFlow = () => {
           </FormSection>
 
           <FormSection>
-            <FormSectionHeading>
-              <Heading as="h3" variant="heading30" marginBottom="space0">
-                Almost there!
-              </Heading>
-            </FormSectionHeading>
-            <FormControl>
-              <Label htmlFor="email">What's your email address?</Label>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="johndoe@gmail.com"
-              />
-              <Label htmlFor="password">Create a password</Label>
-              <Input type="password" id="password" name="password" />
-              <Label htmlFor="passwordConfirm">Confirm password</Label>
-              <Input
-                type="password"
-                id="passwordConfirm"
-                name="passwordConfirm"
-              />
-            </FormControl>
+            <Button variant="primary" onClick={handleSubmit}>
+              Submit
+            </Button>
           </FormSection>
         </Form>
       </Box>

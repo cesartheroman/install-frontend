@@ -15,6 +15,8 @@ import { Label } from "@twilio-paste/core/label";
 import { Box } from "@twilio-paste/core/box";
 import { Button } from "@twilio-paste/core/button";
 
+import Link from "next/link";
+
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
@@ -58,10 +60,12 @@ const Login = () => {
               />
             </FormControl>
             <FormActions>
-              <Button variant="secondary">Sign Up</Button>
-              <Button variant="primary" onClick={handleSubmit}>
-                Login
-              </Button>
+              <Link href="/sign-up">
+                <Button variant="primary">Sign Up</Button>
+              </Link>
+              <Link href="/sign-in">
+                <Button variant="primary">Sign In</Button>
+              </Link>
             </FormActions>
           </FormSection>
         </Form>
