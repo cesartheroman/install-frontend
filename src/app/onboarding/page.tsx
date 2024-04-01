@@ -23,28 +23,26 @@ import { useRouter } from "next/navigation";
 const OnboardingFlow = () => {
   const { user } = useUser();
   const router = useRouter();
-  const [skippedOnboarding, setSkippedOnboarding] = useState(false);
+  console.log("user in onboarding:", user?.unsafeMetadata);
 
   const handleSkipped = async () => {
-    setSkippedOnboarding(true);
-
     if (!user) return null;
 
     user.update({
       unsafeMetadata: {
-        skippedOnboarding,
+        skippedOnboarding: true,
       },
     });
 
     router.push("/dashboard");
   };
 
-  const handleSubmit = () => {
-    setSkippedOnboarding(false);
+  const handleSubmit = async () => {
+    if (!user) return null;
 
     user.update({
       unsafeMetadata: {
-        skippedOnboarding,
+        skippedOnboarding: false,
       },
     });
 

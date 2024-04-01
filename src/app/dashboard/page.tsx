@@ -11,8 +11,9 @@ import PolarAreaChart from "../components/PolarAreaChart";
 const Dashboard = () => {
   const { user } = useUser();
   if (!user) return null;
-
+  console.log(user.unsafeMetadata);
   const skippedOnboarding = user.unsafeMetadata.skippedOnboarding;
+
   if (skippedOnboarding) {
     console.log("this is demo data, fill out onboarding");
   } else {
