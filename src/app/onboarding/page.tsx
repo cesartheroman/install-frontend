@@ -39,6 +39,18 @@ const OnboardingFlow = () => {
     router.push("/dashboard");
   };
 
+  const handleSubmit = () => {
+    setSkippedOnboarding(false);
+
+    user.update({
+      unsafeMetadata: {
+        skippedOnboarding,
+      },
+    });
+
+    router.push("/dashboard");
+  };
+
   return (
     <Theme.Provider>
       <Box
@@ -189,28 +201,9 @@ const OnboardingFlow = () => {
           </FormSection>
 
           <FormSection>
-            <FormSectionHeading>
-              <Heading as="h3" variant="heading30" marginBottom="space0">
-                Almost there!
-              </Heading>
-            </FormSectionHeading>
-            <FormControl>
-              <Label htmlFor="email">What's your email address?</Label>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="johndoe@gmail.com"
-              />
-              <Label htmlFor="password">Create a password</Label>
-              <Input type="password" id="password" name="password" />
-              <Label htmlFor="passwordConfirm">Confirm password</Label>
-              <Input
-                type="password"
-                id="passwordConfirm"
-                name="passwordConfirm"
-              />
-            </FormControl>
+            <Button variant="primary" onClick={handleSubmit}>
+              Submit
+            </Button>
           </FormSection>
         </Form>
       </Box>
