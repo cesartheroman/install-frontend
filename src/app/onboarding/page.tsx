@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { Theme } from "@twilio-paste/core/dist/theme";
 import { Box } from "@twilio-paste/core/box";
@@ -16,12 +16,31 @@ import { Heading } from "@twilio-paste/core/heading";
 import { Paragraph } from "@twilio-paste/core/paragraph";
 import { ButtonGroup } from "@twilio-paste/core/button-group";
 import { Button } from "@twilio-paste/core/button";
-import { UserButton } from "@clerk/nextjs";
+
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 const OnboardingFlow = () => {
+  const { user } = useUser();
+  const router = useRouter();
+  const [skippedOnboarding, setSkippedOnboarding] = useState(false);
+
+  const handleSkipped = async () => {
+    setSkippedOnboarding(true);
+
+    if (!user) return null;
+
+    user.update({
+      unsafeMetadata: {
+        skippedOnboarding,
+      },
+    });
+
+    router.push("/dashboard");
+  };
+
   return (
     <Theme.Provider>
-      <UserButton />
       <Box
         //TODO: can add class to this
         overflow="hidden"
@@ -37,6 +56,9 @@ const OnboardingFlow = () => {
                 Let's get started!
               </Heading>
               <Paragraph>Please answer a few questions.</Paragraph>
+              <Button variant="secondary" onClick={handleSkipped}>
+                Want to do this later? Skip!
+              </Button>
             </FormSectionHeading>
 
             <FormControl>
