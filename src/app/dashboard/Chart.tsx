@@ -84,3 +84,12 @@ export default function Chart() {
     </React.Fragment>
   );
 }
+
+/*
+ 1. Look to see if Twilio paste has some sort of dashboard I could use
+ 2. if they do, let's try that, otherwise might need to check out some other libraries
+ 3. Once I've got the skeleon, let's style it roughly
+ 4. Render a chart into the chart secition
+ 5. Think about how to build cost component
+ 6. Think bout how to build comparison tool
+ */
