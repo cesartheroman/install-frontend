@@ -30,6 +30,20 @@ const Login = () => {
     });
   };
 
+  const [greeting, setGreeting] = useState("Welcome!");
+
+  const apiBaseURL = "http://127.0.0.1:8000";
+
+  const callAPI = async () => {
+    try {
+      const res = await fetch(`${apiBaseURL}/api/healthchecker`);
+      const data = await res.json();
+      setGreeting(data.message);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleSubmit = async () => {};
 
   return (
@@ -38,7 +52,7 @@ const Login = () => {
         <Form maxWidth="size70">
           <FormSection>
             <FormSectionHeading variant="heading30">
-              Welcome!
+              {greeting}
               <Paragraph>Please login or signup</Paragraph>
             </FormSectionHeading>
             <FormControl>
@@ -66,6 +80,9 @@ const Login = () => {
               <Link href="/sign-in">
                 <Button variant="primary">Sign In</Button>
               </Link>
+              <Button variant="primary" onClick={callAPI}>
+                Call API
+              </Button>
             </FormActions>
           </FormSection>
         </Form>
