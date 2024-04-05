@@ -16,7 +16,7 @@ load_dotenv()
 
 
 def UtilityCheck(utility):
-    valid_utilities = ["speculoos_power"]
+    valid_utilities = ["speculoos_power", "commonwealth_edison", "seattle_city_light"]
     error_string = "The utility provided is not available within Bayou Energy."
     if utility not in valid_utilities:
         return error_string
@@ -70,13 +70,18 @@ def BayouAPICustomer2(utility, email):
     customer = requests.get(
         f"https://{bayou_domain}/api/v2/customers",
         json={
-            "utility": utility,  # Speculoos is Bayou's fake utility for testing, https://docs.bayou.energy/v2.0/reference/utility-support
-            "email": email,  # Email address isn't a required field, https://docs.bayou.energy/docs/merge-customer-code-with-your-project
+            "utility": utility,
+            "email": email,
         },
         auth=(bayou_api_key, ""),
     ).json()
 
-    return customer[0]
+    for i in range(len(customer)):
+        if customer[i]["utility"] == utility:
+            if customer[i]["email"] == email:
+                customer_use = customer[i]
+
+    return customer_use
 
 
 def BayouAPICustomerLink(customer):
@@ -121,6 +126,18 @@ def BayouAPICustomerBillData(customer):
             eleccarray.append(bill["electricity_amount"])
             gasarray.append(bill["gas_consumption"])
             gascarray.append(bill["gas_amount"])
+
+        elecarray = np.array(elecarray)
+        elecarray = elecarray.astype(float)
+
+        eleccarray = np.array(eleccarray)
+        eleccarray = eleccarray.astype(float)
+
+        gasarray = np.array(gasarray)
+        gasarray = gasarray.astype(float)
+
+        gascarray = np.array(gascarray)
+        gascarray = gascarray.astype(float)
 
         elecavg = np.average(elecarray)
         elecyr = np.sum(elecarray)
