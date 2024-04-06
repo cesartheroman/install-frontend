@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./global.css";
 
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
