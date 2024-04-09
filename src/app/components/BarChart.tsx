@@ -52,7 +52,7 @@ const data = {
 };
 
 const BarChart = () => {
-  return <Bar className="chart" options={options} data={data} />;
+  return <Bar className="chart flex-auto" options={options} data={data} />;
 };
 
 export default BarChart;
