@@ -3,7 +3,6 @@ import "./global.css";
 
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
-import { UserButton } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +22,7 @@ export default function RootLayout({
         <title>Join INSTALL </title>
       </head>
       <ClerkProvider>
-        <UserButton afterSignOutUrl="/" />
-        <body className={`${inter.className} wrapper`}>{children}</body>
+        <body className={`${inter.className} `}>{children}</body>
       </ClerkProvider>
     </html>
   );
