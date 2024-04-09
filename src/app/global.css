@@ -147,28 +147,3 @@ h6 {
 #__next {
   isolation: isolate;
 }
-
-.wrapper {
-  margin: 2rem;
-  border: 1px dashed purple;
-}
-
-.box {
-  border: 1px dashed red;
-  margin: 1rem;
-}
-
-.chart {
-  border: 1px dashed red;
-  width: 950px;
-}
-
-.landingWrapper {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 2fr 2fr;
-  margin: 1rem;
-  max-height: 90vh;
-
-  border: 1px dashed green;
-}
