@@ -1,0 +1,122 @@
+// database
+datasource db {
+  provider = "sqlite"
+  url      = "file:database.db"
+}
+
+// generator
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = 5
+}
+
+// data models
+model Home {
+  id                Int     @id @default(autoincrement())
+  address           String
+  constructionType  String
+  homeYear          Int
+  heatingSetpoint   Int
+  coolingSetpoint   Int
+  homeArea          Int
+  ceilingHeight     Int
+  stories           Int
+  owner             User    @relation(fields: [ownerId], references: [id])
+  ownerId           Int     @unique
+}
+
+model User {
+  id            Int     @id @default(autoincrement())
+  email         String  @unique
+  name          String?
+  utility       String  @default("speculoos_power")
+  street        String
+  city          String
+  state         String
+  zip           Int
+  home          Home?
+  appliances    Appliance[]
+  phone         Int
+  energy        UserEnergy[]
+  gas           UserGas[]
+  water         UserWater[]
+}
+
+model Appliance {
+  id                Int     @id @default(autoincrement())
+  applianceType     String
+  applianceModelId  String
+  intParam1         Int?
+  intParam2         Int?
+  intParam3         Int?
+  intParam4         Int?
+  intParam5         Int?
+  floatParam1       Float?
+  floatParam2       Float?
+  floatParam3       Float?
+  floatParam4       Float?
+  floatParam5       Float?
+  stringParam1      String?
+  stringParam2      String?
+  stringParam3      String?
+  stringParam4      String?
+  stringParam5      String?
+  energy            Energy[]
+  gas               Gas[]
+  water             Water[]
+}
+
+model UserEnergy {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  energy    Float
+  cost      Float?
+  owner             User    @relation(fields: [ownerId], references: [id])
+  ownerId           Int     @unique
+}
+
+model UserGas {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  gas       Float
+  cost      Float?
+  owner     User    @relation(fields: [ownerId], references: [id])
+  ownerId   Int     @unique
+}
+
+model UserWater {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  gas       Float
+  cost      Float?
+  owner     User    @relation(fields: [ownerId], references: [id])
+  ownerId   Int     @unique
+}
+
+model HomeEnergy {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  energy    Float
+  cost      Float?
+  owner     Home    @relation(fields: [ownerId], references: [id])
+  ownerId   Int     @unique
+}
+
+model HomeGas {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  gas       Float
+  cost      Float?
+  owner     Home    @relation(fields: [ownerId], references: [id])
+  ownerId   Int     @unique
+}
