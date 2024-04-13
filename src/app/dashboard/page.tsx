@@ -1,5 +1,6 @@
 "use client";
 
+//TODO: rename appliance tool to Appliance Selector, Cost Comparison Tool
 import Link from "next/link";
 import Image from "next/image";
 
