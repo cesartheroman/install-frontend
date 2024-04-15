@@ -9,7 +9,6 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
 
 ChartJS.register(
   CategoryScale,
@@ -28,46 +27,44 @@ const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Bar Chart",
+      text: "Compare two appliances by month",
     },
   },
 };
 
-interface User {
-  id: number;
-  utility: string;
-  email: string;
-  address: string;
-  city: string;
-  state: string;
-  zip: number;
-}
+// interface User {
+//   id: number;
+//   utility: string;
+//   email: string;
+//   address: string;
+//   city: string;
+//   state: string;
+//   zip: number;
+// }
 
-const dummyUser: User = {
-  id: 1234,
-  utility: "Seattle City Light",
-  email: "erick.s.salvatierra@gmail.com",
-  address: "123 Elm St",
-  city: "Chicago",
-  state: "Il",
-  zip: 60007,
-};
-
-// const labels = ["January", "February", "March", "April", "May", "June", "July"];
+// const dummyUser: User = {
+//   id: 1234,
+//   utility: "Seattle City Light",
+//   email: "erick.s.salvatierra@gmail.com",
+//   address: "123 Elm St",
+//   city: "Chicago",
+//   state: "Il",
+//   zip: 60007,
+// };
 
 const labels = [
-  "January 2024",
-  "December 2023",
-  "November 2023",
-  "October 2023",
-  "September 2023",
-  "August 2023",
-  "July 2023",
-  "June 2023",
-  "May 2023",
-  "April 2023",
-  "March 2023",
   "February 2023",
+  "March 2023",
+  "April 2023",
+  "May 2023",
+  "June 2023",
+  "July 2023",
+  "August 2023",
+  "September 2023",
+  "October 2023",
+  "November 2023",
+  "December 2023",
+  "January 2024",
 ];
 
 const applianceAMonthlyCosts = [
@@ -82,7 +79,7 @@ const data = {
   datasets: [
     {
       label: "Appliance A",
-      // NOTE: think about how this data should be modelled, cost vs labels.
+      // NOTE: think about how this data should be modelled, cost vs months.
       data: applianceAMonthlyCosts.map((monthlyCost) => monthlyCost),
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
