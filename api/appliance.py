@@ -150,6 +150,9 @@ class Dishwasher(Appliance):
     ES_annual_energy_use: float # Energy use in kWh/year for 215 uses
     weekly_user_loads: float # User defined, weekly loads
     water_use_per_cycle: float # Expected water use per cycle in gal/cycle
+    dishwasher_type: str # Compact or Standard
+    dishwasher_width: float # width in inches
+    dishwasher_depth: float # depth in inches
     average_uses = 215
     average_user: bool # Determines whether or not to use average_uses
     dishwasher_type: str # "Standard" or "Compact"

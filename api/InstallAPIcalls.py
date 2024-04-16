@@ -211,7 +211,7 @@ def EnergyStarAPIApplianceMatch(appliance_type, brand_name, model_number, **kwar
                 time.sleep(2**try_number)
                 try_number = try_number + 1
 
-        energy_star_df = pd.DataFrame(test2)
+        energy_star_df = pd.DataFrame(energy_star_json)
 
         # As far as I can tell only the model number is needed - but brand name + model number should make a series of selectors easier
         energy_star_mod = energy_star_df[energy_star_df["model_number"] == model_number]
@@ -268,7 +268,7 @@ def EnergyStarAPILookup(appliance_type):
                 time.sleep(2**try_number)
                 try_number = try_number + 1
 
-        energy_star_df = pd.DataFrame(test2)
+        energy_star_df = pd.DataFrame(energy_star_json)
 
         return energy_star_df
 

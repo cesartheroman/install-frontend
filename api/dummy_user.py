@@ -1,5 +1,6 @@
 import json
 import numpy as np
+import InstallAPIcalls
 
 dummy_user = {}
 
@@ -17,6 +18,12 @@ dumelec = [52.831, 52.655, 94.642, 25.031, 42.981, 25.413, 73.575, 90.008, 92.17
 dumgas = [27001, 53099, 18340, 61400, 68329, 63334, 81523, 90973, 71470, 63650, 37285, 63207] #all in therms
 dumelecc = [108.53, 61.20, 164.28, 135.03, 156.93, 173.56, 157.22, 98.54, 173.10, 129.48, 115.60, 94.74] #all in $
 dumgasc = [75.50, 40.07, 90.60, 86.42, 57.33, 12.75, 85.91, 72.98, 44.37, 17.13, 51.56, 10.84] #all in $
+
+dummonth.reverse()
+dumelec.reverse()
+dumgas.reverse()
+dumelecc.reverse()
+dumgasc.reverse()
 
 user_energy = {}
 user_energy['date_names'] = dummonth
@@ -71,12 +78,15 @@ appliance_types = ['washer', 'dryer', 'dishwasher']
 appliance_probs = [[0.05, 0.08], [0.1, 0.2], [0.05, 0.08]]
 
 for i in range(len(appliance_types)):
-    dummy_appliance = {}
-    dummy_appliance['applianceType'] = appliance_types[i]
-    dummy_appliance['date_names'] = dummonth
-
-    #gas powered dryer
+    dummy_appliance = {'applianceType': appliance_types[i], 'date_names': dummonth}
+    # gas powered dryer
     if appliance_types[i] == 'dryer':
+        dummy_appliance['brand_name'] = "Samsung"
+        dummy_appliance['model_name'] = "DV50K8600GV"
+        dummy_appliance['dryer_volume_cu_ft'] = 7.4
+        dummy_appliance['CEF'] = 3.49
+        dummy_appliance['dryer_type'] = 'Standard'
+        dummy_appliance['dryer_energy_type'] = 'Gas'
         dummy_appliance_gas = []
         dummy_appliance_gasc = []
 
@@ -92,8 +102,34 @@ for i in range(len(appliance_types)):
         dummy_appliance['gas_consumption_annual'] = sum(dummy_appliance_gas)
         dummy_appliance['gas_cost_annual'] = sum(dummy_appliance_gasc)
 
-    #electric washer, dishwasher
-    else:
+    # electric washer, dishwasher
+    elif appliance_types[i] == 'washer':
+        dummy_appliance['brand_name'] = "LG"
+        dummy_appliance['model_name'] = "WT7010CW"
+        dummy_appliance['washer_volume_cu_ft'] = 4.5
+        dummy_appliance['IMEF'] = 2.06
+        dummy_appliance['load_type'] = 'Top Load'
+        dummy_appliance_elec = []
+        dummy_appliance_elecc = []
+
+        for j in range(len(dumelec)):
+            elecper = np.random.choice(appliance_probs[i])
+
+            dummy_appliance_elec.append(elecper*dumelec[j])
+            dummy_appliance_elecc.append(elecper*dumelecc[j])
+
+        dummy_appliance['electricity_consumption'] = dummy_appliance_elec
+        dummy_appliance['electricity_cost'] = dummy_appliance_elecc
+        dummy_appliance['electricity_consumption_annual'] = sum(dummy_appliance_elec)
+        dummy_appliance['electricity_cost_annual'] = sum(dummy_appliance_elecc)
+
+    elif appliance_types[i] == "dishwasher":
+        dummy_appliance["brand_name"] = "GE"
+        dummy_appliance["model_name"] = "DDT700SSNSS"
+        dummy_appliance["ES_annual_energy_use"] = 240
+        dummy_appliance["dishwasher_type"] = "Standard"
+        dummy_appliance["dishwasher_width"] = 23.8
+        dummy_appliance["dishwasher_depth"] = 24
         dummy_appliance_elec = []
         dummy_appliance_elecc = []
 
@@ -112,6 +148,11 @@ for i in range(len(appliance_types)):
 
 with open('dummy_user.json', 'w') as out:
     json.dump(dummy_user,out)
+
+# applookup = InstallAPIcalls.EnergyStarAPILookup("dishwashers")
+# applookup.to_csv("dishwashers.csv", index=False)
+
+
 
 
 
