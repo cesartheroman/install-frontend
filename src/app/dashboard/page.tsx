@@ -1,6 +1,5 @@
 "use client";
 
-//TODO: rename appliance tool to Appliance Selector, Cost Comparison Tool
 import Link from "next/link";
 import Image from "next/image";
 
@@ -154,7 +153,7 @@ const Dashboard = () => {
           <Card className="lg:col-span-2" x-chunk="dashboard-01-chunk-4">
             <CardHeader className="flex flex-row items-center">
               <div className="grid gap-2">
-                <CardTitle>Utility usage by appliance</CardTitle>
+                <CardTitle>Utility Usage by Appliance</CardTitle>
                 <CardDescription>Recent utility usage.</CardDescription>
               </div>
             </CardHeader>
@@ -164,7 +163,7 @@ const Dashboard = () => {
           </Card>
           <Card x-chunk="dashboard-01-chunk-5">
             <CardHeader>
-              <CardTitle>KwH used</CardTitle>
+              <CardTitle>Cost Comparison Tool</CardTitle>
               <CardDescription>See your electric cost by KwH</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-8">
@@ -181,7 +180,7 @@ const Dashboard = () => {
           <Card className="xl:col-span-3">
             <CardHeader className="flex flex-row items-center">
               <div className="grid gap-2">
-                <CardTitle>Appliance Comparison Tool</CardTitle>
+                <CardTitle>Appliance Selector</CardTitle>
                 <CardDescription>
                   Want to compare what appliance would be the best for your
                   historical usage?
