@@ -1,1 +1,201 @@
-{"id": 1234, "utility": "Seattle City Light", "email": "erick.s.salvatierra@gmail.com", "address": "123 Elm St", "city": "Chicago", "state": "IL", "zip": 60007, "user_energy": {"date_names": ["February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023", "October 2023", "November 2023", "December 2023", "January 2024"], "electricity_consumption": [87.798, 47.757, 13.962, 92.173, 90.008, 73.575, 25.413, 42.981, 25.031, 94.642, 52.655, 52.831], "electricity_cost": [94.74, 115.6, 129.48, 173.1, 98.54, 157.22, 173.56, 156.93, 135.03, 164.28, 61.2, 108.53]}, "user_electricity_consumption_annual": 698.8259999999999, "user_electricity_cost_annual": 1568.21, "user_gas": {"date_names": ["February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023", "October 2023", "November 2023", "December 2023", "January 2024"], "gas_consumption": [63207, 37285, 63650, 71470, 90973, 81523, 63334, 68329, 61400, 18340, 53099, 27001], "gas_cost": [10.84, 51.56, 17.13, 44.37, 72.98, 85.91, 12.75, 57.33, 86.42, 90.6, 40.07, 75.5]}, "user_gas_consumption_annual": 699611, "user_gas_cost_annual": 645.46, "home": {"date_names": ["February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023", "October 2023", "November 2023", "December 2023", "January 2024"], "home_electricity_consumption": [52.6788, 19.1028, 8.3772, 36.8692, 36.0032, 29.430000000000003, 15.2478, 25.7886, 10.0124, 56.785199999999996, 21.062, 31.6986], "home_electricity_cost": [56.843999999999994, 46.24, 77.68799999999999, 69.24, 39.416000000000004, 62.888000000000005, 104.136, 94.158, 54.012, 98.568, 24.480000000000004, 65.118], "home_gas_consumption": [25282.800000000003, 14914.0, 25460.0, 42882.0, 36389.200000000004, 32609.2, 25333.600000000002, 40997.4, 36840.0, 7336.0, 21239.600000000002, 10800.400000000001], "home_gas_cost": [4.336, 20.624000000000002, 6.852, 26.621999999999996, 29.192000000000004, 34.364, 5.1000000000000005, 34.397999999999996, 51.852, 36.24, 16.028000000000002, 30.200000000000003], "home_electricity_consumption_annual": 343.0558, "home_electricity_cost_annual": 792.788, "home_gas_consumption_annual": 320084.2, "home_gas_cost_annual": 295.808}, "washer": {"applianceType": "washer", "date_names": ["February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023", "October 2023", "November 2023", "December 2023", "January 2024"], "brand_name": "LG", "model_name": "WT7010CW", "washer_volume_cu_ft": 4.5, "IMEF": 2.06, "load_type": "Top Load", "electricity_consumption": [7.02384, 2.38785, 1.11696, 4.60865, 7.20064, 3.6787500000000004, 2.03304, 3.43848, 2.00248, 7.571359999999999, 4.212400000000001, 2.6415500000000005], "electricity_cost": [7.5792, 5.78, 10.3584, 8.655, 7.8832, 7.861000000000001, 13.8848, 12.554400000000001, 10.8024, 13.1424, 4.896, 5.426500000000001], "electricity_consumption_annual": 47.916000000000004, "electricity_cost_annual": 108.8233}, "dryer": {"applianceType": "dryer", "date_names": ["February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023", "October 2023", "November 2023", "December 2023", "January 2024"], "brand_name": "Samsung", "model_name": "DV50K8600GV", "dryer_volume_cu_ft": 7.4, "CEF": 3.49, "ES_energy_use": 685, "dryer_type": "Standard", "dryer_energy_type": "Gas", "gas_consumption": [6320.700000000001, 7457.0, 12730.0, 7147.0, 9097.300000000001, 16304.6, 12666.800000000001, 13665.800000000001, 12280.0, 3668.0, 10619.800000000001, 10800.400000000001], "gas_cost": [1.084, 10.312000000000001, 3.426, 4.437, 7.298000000000001, 17.182, 2.5500000000000003, 11.466000000000001, 17.284000000000002, 18.12, 8.014000000000001, 30.200000000000003], "gas_consumption_annual": 122757.4, "gas_cost_annual": 131.373}, "dishwasher": {"applianceType": "dishwasher", "date_names": ["February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023", "October 2023", "November 2023", "December 2023", "January 2024"], "brand_name": "GE", "model_name": "DDT700SSNSS", "ES_annual_energy_use": 240, "dishwasher_type": "Standard", "dishwasher_width": 23.8, "dishwasher_depth": 24, "electricity_consumption": [4.3899, 3.82056, 0.6981, 7.37384, 4.5004, 5.886, 1.27065, 3.43848, 2.00248, 7.571359999999999, 2.63275, 4.2264800000000005], "electricity_cost": [4.737, 9.248, 6.474, 13.847999999999999, 4.9270000000000005, 12.5776, 8.678, 12.554400000000001, 10.8024, 13.1424, 3.0600000000000005, 8.6824], "electricity_consumption_annual": 47.811, "electricity_cost_annual": 108.7312}}
+{
+  "id": 1234,
+  "utility": "Seattle City Light",
+  "email": "erick.s.salvatierra@gmail.com",
+  "address": "123 Elm St",
+  "city": "Chicago",
+  "state": "IL",
+  "zip": 60007,
+  "user_energy": {
+    "date_names": [
+      "February 2023",
+      "March 2023",
+      "April 2023",
+      "May 2023",
+      "June 2023",
+      "July 2023",
+      "August 2023",
+      "September 2023",
+      "October 2023",
+      "November 2023",
+      "December 2023",
+      "January 2024"
+    ],
+    "electricity_consumption": [
+      87.798, 47.757, 13.962, 92.173, 90.008, 73.575, 25.413, 42.981, 25.031,
+      94.642, 52.655, 52.831
+    ],
+    "electricity_cost": [
+      94.74, 115.6, 129.48, 173.1, 98.54, 157.22, 173.56, 156.93, 135.03,
+      164.28, 61.2, 108.53
+    ]
+  },
+  "user_electricity_consumption_annual": 698.8259999999999,
+  "user_electricity_cost_annual": 1568.21,
+  "user_gas": {
+    "date_names": [
+      "February 2023",
+      "March 2023",
+      "April 2023",
+      "May 2023",
+      "June 2023",
+      "July 2023",
+      "August 2023",
+      "September 2023",
+      "October 2023",
+      "November 2023",
+      "December 2023",
+      "January 2024"
+    ],
+    "gas_consumption": [
+      63207, 37285, 63650, 71470, 90973, 81523, 63334, 68329, 61400, 18340,
+      53099, 27001
+    ],
+    "gas_cost": [
+      10.84, 51.56, 17.13, 44.37, 72.98, 85.91, 12.75, 57.33, 86.42, 90.6,
+      40.07, 75.5
+    ]
+  },
+  "user_gas_consumption_annual": 699611,
+  "user_gas_cost_annual": 645.46,
+  "home": {
+    "date_names": [
+      "February 2023",
+      "March 2023",
+      "April 2023",
+      "May 2023",
+      "June 2023",
+      "July 2023",
+      "August 2023",
+      "September 2023",
+      "October 2023",
+      "November 2023",
+      "December 2023",
+      "January 2024"
+    ],
+    "home_electricity_consumption": [
+      52.6788, 19.1028, 8.3772, 36.8692, 36.0032, 29.430000000000003, 15.2478,
+      25.7886, 10.0124, 56.785199999999996, 21.062, 31.6986
+    ],
+    "home_electricity_cost": [
+      56.843999999999994, 46.24, 77.68799999999999, 69.24, 39.416000000000004,
+      62.888000000000005, 104.136, 94.158, 54.012, 98.568, 24.480000000000004,
+      65.118
+    ],
+    "home_gas_consumption": [
+      25282.800000000003, 14914.0, 25460.0, 42882.0, 36389.200000000004,
+      32609.2, 25333.600000000002, 40997.4, 36840.0, 7336.0, 21239.600000000002,
+      10800.400000000001
+    ],
+    "home_gas_cost": [
+      4.336, 20.624000000000002, 6.852, 26.621999999999996, 29.192000000000004,
+      34.364, 5.1000000000000005, 34.397999999999996, 51.852, 36.24,
+      16.028000000000002, 30.200000000000003
+    ],
+    "home_electricity_consumption_annual": 343.0558,
+    "home_electricity_cost_annual": 792.788,
+    "home_gas_consumption_annual": 320084.2,
+    "home_gas_cost_annual": 295.808
+  },
+  "washer": {
+    "applianceType": "washer",
+    "date_names": [
+      "February 2023",
+      "March 2023",
+      "April 2023",
+      "May 2023",
+      "June 2023",
+      "July 2023",
+      "August 2023",
+      "September 2023",
+      "October 2023",
+      "November 2023",
+      "December 2023",
+      "January 2024"
+    ],
+    "brand_name": "LG",
+    "model_name": "WT7010CW",
+    "washer_volume_cu_ft": 4.5,
+    "IMEF": 2.06,
+    "load_type": "Top Load",
+    "electricity_consumption": [
+      7.02384, 2.38785, 1.11696, 4.60865, 7.20064, 3.6787500000000004, 2.03304,
+      3.43848, 2.00248, 7.571359999999999, 4.212400000000001, 2.6415500000000005
+    ],
+    "electricity_cost": [
+      7.5792, 5.78, 10.3584, 8.655, 7.8832, 7.861000000000001, 13.8848,
+      12.554400000000001, 10.8024, 13.1424, 4.896, 5.426500000000001
+    ],
+    "electricity_consumption_annual": 47.916000000000004,
+    "electricity_cost_annual": 108.8233
+  },
+  "dryer": {
+    "applianceType": "dryer",
+    "date_names": [
+      "February 2023",
+      "March 2023",
+      "April 2023",
+      "May 2023",
+      "June 2023",
+      "July 2023",
+      "August 2023",
+      "September 2023",
+      "October 2023",
+      "November 2023",
+      "December 2023",
+      "January 2024"
+    ],
+    "brand_name": "Samsung",
+    "model_name": "DV50K8600GV",
+    "dryer_volume_cu_ft": 7.4,
+    "CEF": 3.49,
+    "ES_energy_use": 685,
+    "dryer_type": "Standard",
+    "dryer_energy_type": "Gas",
+    "gas_consumption": [
+      6320.700000000001, 7457.0, 12730.0, 7147.0, 9097.300000000001, 16304.6,
+      12666.800000000001, 13665.800000000001, 12280.0, 3668.0,
+      10619.800000000001, 10800.400000000001
+    ],
+    "gas_cost": [
+      1.084, 10.312000000000001, 3.426, 4.437, 7.298000000000001, 17.182,
+      2.5500000000000003, 11.466000000000001, 17.284000000000002, 18.12,
+      8.014000000000001, 30.200000000000003
+    ],
+    "gas_consumption_annual": 122757.4,
+    "gas_cost_annual": 131.373
+  },
+  "dishwasher": {
+    "applianceType": "dishwasher",
+    "date_names": [
+      "February 2023",
+      "March 2023",
+      "April 2023",
+      "May 2023",
+      "June 2023",
+      "July 2023",
+      "August 2023",
+      "September 2023",
+      "October 2023",
+      "November 2023",
+      "December 2023",
+      "January 2024"
+    ],
+    "brand_name": "GE",
+    "model_name": "DDT700SSNSS",
+    "ES_annual_energy_use": 240,
+    "dishwasher_type": "Standard",
+    "dishwasher_width": 23.8,
+    "dishwasher_depth": 24,
+    "electricity_consumption": [
+      4.3899, 3.82056, 0.6981, 7.37384, 4.5004, 5.886, 1.27065, 3.43848,
+      2.00248, 7.571359999999999, 2.63275, 4.2264800000000005
+    ],
+    "electricity_cost": [
+      4.737, 9.248, 6.474, 13.847999999999999, 4.9270000000000005, 12.5776,
+      8.678, 12.554400000000001, 10.8024, 13.1424, 3.0600000000000005, 8.6824
+    ],
+    "electricity_consumption_annual": 47.811,
+    "electricity_cost_annual": 108.7312
+  }
+}
