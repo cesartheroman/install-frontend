@@ -1,8 +1,8 @@
-import InstallAPIcalls
-
 # import InstallGraphing as ElectricityGraph
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from . import InstallAPIcalls
 
 # from fastapi.middleware.wsgi import WSGIMiddleware
 
