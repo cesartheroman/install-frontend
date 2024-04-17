@@ -1,155 +1,497 @@
 "use client";
 
-import * as React from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import Link from "@mui/material/Link";
-import MenuIcon from "@mui/icons-material/Menu";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import Chart from "./Chart";
-import Deposits from "./Deposits";
-import Orders from "./Orders";
+import Link from "next/link";
+import Image from "next/image";
 
-function Copyright(props: any) {
+import { Badge } from "@/app/components/ui/badge";
+import { Button } from "@/app/components/ui/button";
+import { Input } from "@/app/components/ui/input";
+import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/app/components/ui/table";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/app/components/ui/dropdown-menu";
+import {
+  ArrowUpRight,
+  Menu,
+  Package2,
+  Search,
+  MoreHorizontal,
+} from "lucide-react";
+
+import BarChart from "../components/BarChart";
+import { UserButton } from "@clerk/nextjs";
+
+const Dashboard = () => {
   return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-}));
-
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
-export default function Dashboard() {
-  const [open, setOpen] = React.useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
-
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <AppBar position="absolute" open={open}>
-          <Toolbar
-            sx={{
-              pr: "24px", // keep right padding when drawer closed
-            }}
+    <div className="flex min-h-screen w-full flex-col">
+      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+          <Link
+            href="#"
+            className="flex items-center gap-2 text-lg font-semibold md:text-base"
           >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: "36px",
-                ...(open && { display: "none" }),
-              }}
+            <Package2 className="h-6 w-6" />
+            <span className="sr-only">Join INSTALL</span>
+          </Link>
+          <Link
+            href="#"
+            className="text-foreground transition-colors hover:text-foreground"
+          >
+            Dashboard
+          </Link>
+          <Link
+            href="#"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Orders
+          </Link>
+          <Link
+            href="#"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Products
+          </Link>
+          <Link
+            href="#"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Customers
+          </Link>
+          <Link
+            href="#"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Analytics
+          </Link>
+        </nav>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="shrink-0 md:hidden"
             >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Dashboard
-            </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: "100vh",
-            overflow: "auto",
-          }}
-        >
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 240,
-                  }}
-                >
-                  <Chart />
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
-                </Paper>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
-          </Container>
-        </Box>
-      </Box>
-    </ThemeProvider>
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle navigation menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left">
+            <nav className="grid gap-6 text-lg font-medium">
+              <Link
+                href="#"
+                className="flex items-center gap-2 text-lg font-semibold"
+              >
+                <Package2 className="h-6 w-6" />
+                <span className="sr-only">Join INSTALL</span>
+              </Link>
+              <Link href="#" className="hover:text-foreground">
+                Dashboard
+              </Link>
+              <Link
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Orders
+              </Link>
+              <Link
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Products
+              </Link>
+              <Link
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Customers
+              </Link>
+              <Link
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Analytics
+              </Link>
+            </nav>
+          </SheetContent>
+        </Sheet>
+        <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+          <form className="ml-auto flex-1 sm:flex-initial">
+            <div className="relative">
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search appliances..."
+                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
+              />
+            </div>
+          </form>
+          <UserButton afterSignOutUrl="/" />
+        </div>
+      </header>
+      <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+        <div className="grid gap-4 md:gap-8 lg:grid-cols-3 ">
+          <Card className="lg:col-span-2" x-chunk="dashboard-01-chunk-4">
+            <CardHeader className="flex flex-row items-center">
+              <div className="grid gap-2">
+                <CardTitle>Utility Usage by Appliance</CardTitle>
+                <CardDescription>Recent utility usage.</CardDescription>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <BarChart />
+            </CardContent>
+          </Card>
+          <Card x-chunk="dashboard-01-chunk-5">
+            <CardHeader>
+              <CardTitle>Cost Comparison Tool</CardTitle>
+              <CardDescription>See your electric cost by KwH</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-8">
+              <div className="text-2xl font-flex items-center gap-4">
+                $231.89
+              </div>
+              <p className="text-xs text-muted-foreground">
+                +20.1% from last month
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="grid gap-4 md:gap-8 lg:col-span-2">
+          <Card className="xl:col-span-3">
+            <CardHeader className="flex flex-row items-center">
+              <div className="grid gap-2">
+                <CardTitle>Appliance Selector</CardTitle>
+                <CardDescription>
+                  Want to compare what appliance would be the best for your
+                  historical usage?
+                </CardDescription>
+              </div>
+              <Button asChild size="sm" className="ml-auto gap-1">
+                <Link href="#">
+                  View All
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </CardHeader>
+            <CardContent>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="hidden w-[100px] sm:table-cell">
+                        <span className="sr-only">Image</span>
+                      </TableHead>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Price
+                      </TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Total Sales
+                      </TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Created at
+                      </TableHead>
+                      <TableHead>
+                        <span className="sr-only">Actions</span>
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="hidden sm:table-cell">
+                        <Image
+                          alt="Product image"
+                          className="aspect-square rounded-md object-cover"
+                          height="64"
+                          src="/placeholder.svg"
+                          width="64"
+                        />
+                      </TableCell>
+                      <TableCell className="font-medium">
+                        Laser Lemonade Machine
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline">Draft</Badge>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        $499.99
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">25</TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        2023-07-12 10:42 AM
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="hidden sm:table-cell">
+                        <Image
+                          alt="Product image"
+                          className="aspect-square rounded-md object-cover"
+                          height="64"
+                          src="/placeholder.svg"
+                          width="64"
+                        />
+                      </TableCell>
+                      <TableCell className="font-medium">
+                        Hypernova Headphones
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline">Active</Badge>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        $129.99
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        100
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        2023-10-18 03:21 PM
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="hidden sm:table-cell">
+                        <Image
+                          alt="Product image"
+                          className="aspect-square rounded-md object-cover"
+                          height="64"
+                          src="/placeholder.svg"
+                          width="64"
+                        />
+                      </TableCell>
+                      <TableCell className="font-medium">
+                        AeroGlow Desk Lamp
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline">Active</Badge>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        $39.99
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">50</TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        2023-11-29 08:15 AM
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="hidden sm:table-cell">
+                        <Image
+                          alt="Product image"
+                          className="aspect-square rounded-md object-cover"
+                          height="64"
+                          src="/placeholder.svg"
+                          width="64"
+                        />
+                      </TableCell>
+                      <TableCell className="font-medium">
+                        TechTonic Energy Drink
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="secondary">Draft</Badge>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        $2.99
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">0</TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        2023-12-25 11:59 PM
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="hidden sm:table-cell">
+                        <Image
+                          alt="Product image"
+                          className="aspect-square rounded-md object-cover"
+                          height="64"
+                          src="/placeholder.svg"
+                          width="64"
+                        />
+                      </TableCell>
+                      <TableCell className="font-medium">
+                        Gamer Gear Pro Controller
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline">Active</Badge>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        $59.99
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">75</TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        2024-01-01 12:00 AM
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="hidden sm:table-cell">
+                        <Image
+                          alt="Product image"
+                          className="aspect-square rounded-md object-cover"
+                          height="64"
+                          src="/placeholder.svg"
+                          width="64"
+                        />
+                      </TableCell>
+                      <TableCell className="font-medium">
+                        Luminous VR Headset
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline">Active</Badge>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        $199.99
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">30</TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        2024-02-14 02:14 PM
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+              <CardFooter>
+                <div className="text-xs text-muted-foreground">
+                  Showing <strong>1-10</strong> of <strong>32</strong> products
+                </div>
+              </CardFooter>
+            </CardContent>
+          </Card>
+        </div>
+      </main>
+    </div>
   );
-}
+};
+
+export default Dashboard;

@@ -44,7 +44,7 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => { };
 
   return (
     <Theme.Provider>

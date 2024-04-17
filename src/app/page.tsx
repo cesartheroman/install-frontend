@@ -2,7 +2,7 @@
 
 import { Theme } from "@twilio-paste/core/theme";
 
-import Login from "./login/page";
+import Login from "./Login/page";
 
 export default function App() {
   return (
