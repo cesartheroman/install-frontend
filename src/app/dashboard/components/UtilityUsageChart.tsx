@@ -17,7 +17,7 @@ const UtilityUsageChart = ({ userData }: { userData: User }) => (
       </div>
     </CardHeader>
     <CardContent>
-      <BarChart />
+      <BarChart userData={userData} />
     </CardContent>
   </Card>
 );

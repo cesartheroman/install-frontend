@@ -22,7 +22,12 @@ const Dashboard = () => {
       <NavBar />
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-4 md:gap-8 lg:grid-cols-3 ">
-          {userData && <UtilityUsageChart userData={userData} />}
+          {userData ? (
+            <UtilityUsageChart userData={userData} />
+          ) : (
+            //NOTE: good candidate to use a skeleton for when loading
+            <div>Loading...</div>
+          )}
           <CostComparisonTool />
         </div>
         <div className="grid gap-4 md:gap-8 lg:col-span-2">
