@@ -19,13 +19,13 @@ export interface User {
   home: Home;
 }
 
-export interface UserGas {
+interface UserGas {
   date_names: string[];
   gas_consumption: number[];
   gas_cost: number[];
 }
 
-export interface Home {
+interface Home {
   date_names: string[];
   home_electricity_consumption: number[];
   home_electricity_cost: number[];

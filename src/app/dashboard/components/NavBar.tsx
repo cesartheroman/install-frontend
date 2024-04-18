@@ -1,6 +1,7 @@
-import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
 import { Menu, Package2, Search } from "lucide-react";
+
 import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import { Input } from "@/app/components/ui/input";
 import { Button } from "@/app/components/ui/button";
