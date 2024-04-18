@@ -27,10 +27,10 @@ const CostComparisonTool = () => (
           Energy Breakdown by Savings
         </p>
         $10 / month average
-        <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+        <p className="text-xs text-muted-foreground">+5.1% from last month</p>
       </div>
     </CardContent>
-    <CardContent className="grid gap-8">
+    <CardContent className="grid gap-8 mg">
       <p className="text-xs text-muted-foreground">
         Discover Other Savings via Grid Interactive Programs
       </p>
