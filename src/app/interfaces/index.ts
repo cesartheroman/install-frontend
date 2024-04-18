@@ -17,6 +17,9 @@ export interface User {
   user_gas_consumption_annual: number;
   user_gas_cost_annual: number;
   home: Home;
+  washer: Washer;
+  dryer: Dryer;
+  dishwasher: Dishwasher;
 }
 
 interface UserGas {
@@ -69,7 +72,7 @@ export interface Dryer extends Appliance {
 export interface Dishwasher extends Appliance {
   ES_annual_energy_use: number;
   dishwasher_type: string;
-  dishwaher_width: number;
+  dishwasher_width: number;
   dishwasher_depth: number;
   electricity_consumption: number[];
   electricity_cost: number[];
