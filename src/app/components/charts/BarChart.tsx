@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { User } from "@/app/interfaces";
 
 ChartJS.register(
   CategoryScale,
@@ -31,26 +32,6 @@ const options = {
     },
   },
 };
-
-// interface User {
-//   id: number;
-//   utility: string;
-//   email: string;
-//   address: string;
-//   city: string;
-//   state: string;
-//   zip: number;
-// }
-
-// const dummyUser: User = {
-//   id: 1234,
-//   utility: "Seattle City Light",
-//   email: "erick.s.salvatierra@gmail.com",
-//   address: "123 Elm St",
-//   city: "Chicago",
-//   state: "Il",
-//   zip: 60007,
-// };
 
 const labels = [
   "February 2023",
@@ -91,7 +72,7 @@ const data = {
   ],
 };
 
-const BarChart = () => {
+const BarChart = ({ userData }: { userData: User }) => {
   return <Bar className="chart" options={options} data={data} />;
 };
 
