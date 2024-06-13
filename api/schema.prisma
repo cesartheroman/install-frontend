@@ -35,35 +35,57 @@ model User {
   state         String
   zip           Int
   home          Home?
-  appliances    Appliance[]
-  phone         Int
+  dryers        Dryer[]
+  washers       Washer[]
+  dishwashers   Dishwasher[]
+  hvac          Hvac[]
+  phone         BigInt
   energy        UserEnergy[]
   gas           UserGas[]
   water         UserWater[]
 }
 
-model Appliance {
+model Hvac {
   id                Int     @id @default(autoincrement())
   applianceType     String
   applianceModelId  String
-  intParam1         Int?
-  intParam2         Int?
-  intParam3         Int?
-  intParam4         Int?
-  intParam5         Int?
-  floatParam1       Float?
-  floatParam2       Float?
-  floatParam3       Float?
-  floatParam4       Float?
-  floatParam5       Float?
-  stringParam1      String?
-  stringParam2      String?
-  stringParam3      String?
-  stringParam4      String?
-  stringParam5      String?
-  energy            Energy[]
-  gas               Gas[]
-  water             Water[]
+  energy            HvacEnergy[]
+  gas               HvacGas[]
+  water             HvacWater[]
+  owner             User    @relation(fields: [ownerId], references: [id])
+  ownerId           Int     @unique
+}
+
+model Dryer {
+  id                Int     @id @default(autoincrement())
+  applianceType     String
+  applianceModelId  String
+  energy            DryerEnergy[]
+  gas               DryerGas[]
+  owner             User    @relation(fields: [ownerId], references: [id])
+  ownerId           Int     @unique
+}
+
+model Washer {
+  id                Int     @id @default(autoincrement())
+  applianceType     String
+  applianceModelId  String
+  energy            WasherEnergy[]
+  gas               WasherGas[]
+  water             WasherWater[]
+  owner             User    @relation(fields: [ownerId], references: [id])
+  ownerId           Int     @unique
+}
+
+model Dishwasher {
+  id                Int     @id @default(autoincrement())
+  applianceType     String
+  applianceModelId  String
+  energy            DishwasherEnergy[]
+  gas               DishwasherGas[]
+  water             DishwasherWater[]
+  owner             User    @relation(fields: [ownerId], references: [id])
+  ownerId           Int     @unique
 }
 
 model UserEnergy {
@@ -73,8 +95,8 @@ model UserEnergy {
   dateName  String
   energy    Float
   cost      Float?
-  owner             User    @relation(fields: [ownerId], references: [id])
-  ownerId           Int     @unique
+  owner     User    @relation(fields: [ownerId], references: [id])
+  ownerId   Int     @unique
 }
 
 model UserGas {
@@ -99,24 +121,122 @@ model UserWater {
   ownerId   Int     @unique
 }
 
-model HomeEnergy {
+model HvacEnergy {
   id        Int         @id @default(autoincrement())
   dateStart DateTime
   dateEnd   DateTime
   dateName  String
   energy    Float
   cost      Float?
-  owner     Home    @relation(fields: [ownerId], references: [id])
+  owner     Hvac    @relation(fields: [ownerId], references: [id])
   ownerId   Int     @unique
 }
 
-model HomeGas {
+model HvacGas {
   id        Int         @id @default(autoincrement())
   dateStart DateTime
   dateEnd   DateTime
   dateName  String
   gas       Float
   cost      Float?
-  owner     Home    @relation(fields: [ownerId], references: [id])
+  owner     Hvac    @relation(fields: [ownerId], references: [id])
   ownerId   Int     @unique
+}
+
+model HvacWater {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  gas       Float
+  cost      Float?
+  owner     Hvac    @relation(fields: [ownerId], references: [id])
+  ownerId   Int     @unique
+}
+model DryerEnergy {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  energy    Float
+  cost      Float?
+  owner     Dryer    @relation(fields: [ownerId], references: [id])
+  ownerId   Int     @unique
+}
+
+model DryerGas {
+  id            Int         @id @default(autoincrement())
+  dateStart     DateTime
+  dateEnd       DateTime
+  dateName      String
+  gas           Float
+  cost          Float?
+  owner         Dryer    @relation(fields: [ownerId], references: [id])
+  ownerId       Int     @unique
+}
+
+model WasherEnergy {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  energy    Float
+  cost      Float?
+  owner     Washer      @relation(fields: [ownerId], references: [id])
+  ownerId   Int         @unique
+}
+
+model WasherGas {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  gas       Float
+  cost      Float?
+  owner     Washer      @relation(fields: [ownerId], references: [id])
+  ownerId   Int         @unique
+}
+
+model WasherWater {
+  id        Int         @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  gas       Float
+  cost      Float?
+  owner     Washer      @relation(fields: [ownerId], references: [id])
+  ownerId   Int         @unique
+}
+
+model DishwasherEnergy {
+  id        Int             @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  energy    Float
+  cost      Float?
+  owner     Dishwasher      @relation(fields: [ownerId], references: [id])
+  ownerId   Int             @unique
+}
+
+model DishwasherGas {
+  id        Int             @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  gas       Float
+  cost      Float?
+  owner     Dishwasher      @relation(fields: [ownerId], references: [id])
+  ownerId   Int             @unique
+}
+
+model DishwasherWater {
+  id        Int             @id @default(autoincrement())
+  dateStart DateTime
+  dateEnd   DateTime
+  dateName  String
+  gas       Float
+  cost      Float?
+  owner     Dishwasher      @relation(fields: [ownerId], references: [id])
+  ownerId   Int             @unique
 }
