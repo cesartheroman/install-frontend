@@ -1,24 +1,10 @@
-import time
-from contextlib import asynccontextmanager
-from typing import Annotated, Union
-
-import numpy as np
-import requests
-from fastapi import BackgroundTasks, FastAPI, Path, Query
+# import InstallGraphing as ElectricityGraph
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.wsgi import WSGIMiddleware
-
-# from fastapi.testclient import TestClient
-from pydantic import BaseModel
 
 from . import InstallAPIcalls
-from . import InstallGraphing as ElectricityGraph
 
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
+# from fastapi.middleware.wsgi import WSGIMiddleware
 
 app = FastAPI(docs_url="/api/docs", openapi_url="/api/openapi.json")
 
@@ -124,7 +110,9 @@ def bayou_customer_elec_data(customer_id: int):
 @app.get("/elec_graphs/")
 def create_electricity_graph(customer_id: int):
     # Right now there's no logic for pulling in customer data so we'll just mount the dashboard
-    app.mount("/electricity_graph/", WSGIMiddleware(ElectricityGraph.server))
+    # NOTE: Looks like server method does not exist in ElectricityGraph also some other errors are popping up
+    # app.mount("/electricity_graph/", WSGIMiddleware(ElectricityGraph.server))
+    print("customer_id:", customer_id)
 
 
 # @app.put("/items/{item_id}")
